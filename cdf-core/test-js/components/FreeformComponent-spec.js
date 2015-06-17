@@ -23,7 +23,7 @@ define([
    */
   describe("Freeform Component #", function() {
     var dashboard;
-    
+
     /**
      * ## Global settings for all suites.
      * #begin
@@ -72,7 +72,7 @@ define([
         var redraw = _.bind(this.redraw, this);
         this.triggerQuery({
           dataAccessId: "foo",
-          path: "bar" 
+          path: "bar"
         }, redraw);
       },
       postFetch: function(d) { return d; },
@@ -93,7 +93,7 @@ define([
           url: "foo",
           type: "json",
           method: "get",
-          path: "bar" 
+          path: "bar"
         }, redraw);
       },
       postFetch: function(d) { return d; },
@@ -147,7 +147,7 @@ define([
         dashboard.addComponent(basic);
       });
       //#end
-      
+
       /**
        * ## Freeform Component # Synchronous Lifecycle # calls each event handler exactly once
        * - event handler: preExecution -> customfunction -> postExecution
@@ -188,7 +188,7 @@ define([
           expect(basic.preExecution.calls.count()).toEqual(1);
           expect(basic.customfunction).not.toHaveBeenCalled();
           expect(basic.postExecution).not.toHaveBeenCalled();
-          done();          
+          done();
         });
 
         dashboard.updateAll([basic, componentForTestValidation]);
@@ -217,7 +217,7 @@ define([
             var redraw = _.bind(this.redraw, this);
             this.triggerQuery({
               dataAccessId: "foo",
-              path: "bar" 
+              path: "bar"
             }, redraw);
           },
           postFetch: function(d) { return d; },
@@ -332,7 +332,7 @@ define([
       /**
        * ## Freeform Component # Query Lifecycle # only updates once if called concurrently
        */
-      xit("only updates once if called concurrently", function(done) {
+      it("only updates once if called concurrently", function(done) {
         var success, firstRun = true;
 
         spyOn(freeformQuery, "update").and.callThrough();
@@ -428,7 +428,7 @@ define([
           expect(freeformQuery.preExecution.calls.count()).toEqual(1);
           expect(freeformQuery.customfunction.calls.count()).toEqual(1);
           expect(freeformQuery.postExecution).not.toHaveBeenCalled();
-          done();          
+          done();
         });
 
         dashboard.updateAll([freeformQuery, componentForTestValidation]);
@@ -454,7 +454,7 @@ define([
               url: "foo",
               type: "json",
               method: "get",
-              path: "bar" 
+              path: "bar"
             }, redraw);
           },
           postFetch: function(d) { return d; },
@@ -508,7 +508,7 @@ define([
       /**
        * ## Freeform Component # AJAX Lifecycle # only updates once if called concurrently
        */
-      xit("only updates once if called concurrently", function(done) {
+      it("only updates once if called concurrently", function(done) {
         var success, firstRun = true;
 
         spyOn(dashboard, 'updateComponent').and.callThrough();
@@ -579,7 +579,7 @@ define([
           expect(freeformAjax.customfunction.calls.count()).toEqual(1);
           expect(freeformAjax.redraw).not.toHaveBeenCalled();
           expect(freeformAjax.postExecution).not.toHaveBeenCalled();
-          done();        
+          done();
         });
 
         dashboard.updateAll([freeformAjax, componentForTestValidation]);
